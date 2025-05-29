@@ -22,9 +22,9 @@
         document.body.appendChild(renderer.domElement);
 
         // إضافة إضاءة
-        const ambientLight = new THREE.AmbientLight(0x404040, 1.5);
+        const ambientLight = new THREE.AmbientLight(0x404040, 2.0);
         scene.add(ambientLight);
-        const directionalLight = new THREE.DirectionalLight(0xffffff, 0.8);
+        const directionalLight = new THREE.DirectionalLight(0xffffff, 1.0);
         directionalLight.position.set(1, 1, 1);
         scene.add(directionalLight);
 
@@ -36,11 +36,11 @@
         // تحميل نموذج الهيكل العظمي
         const loader = new THREE.GLTFLoader();
         loader.load(
-            'https://karim4kk.github.io/3d/skeleton.glb', // رابط النموذج الخاص بك
+            'https://karim4kk.github.io/3d/skeleton.glb',
             (gltf) => {
                 const model = gltf.scene;
-                model.scale.set(0.01, 0.01, 0.01); // اضبط الحجم حسب الحاجة
-                model.position.set(0, -1, 0);
+                model.scale.set(100, 100, 100); // تكبير النموذج
+                model.position.set(0, 0, 0);
                 scene.add(model);
             },
             (xhr) => console.log((xhr.loaded / xhr.total * 100) + '% loaded'),
@@ -48,7 +48,7 @@
         );
 
         // ضبط موقع الكاميرا
-        camera.position.set(0, 1, 3);
+        camera.position.set(0, 1, 5);
 
         // دالة التحريك
         function animate() {
