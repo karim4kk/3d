@@ -36,16 +36,15 @@
         // تحميل نموذج الهيكل العظمي
         const loader = new THREE.GLTFLoader();
         loader.load(
-            // استبدل هذا برابط ملف GLTF الذي استضفته
-            'YOUR_SKELETON_GLTF_URL_HERE', // مثال: 'https://your-server.com/skeleton.gltf'
+            'https://karim4kk.github.io/3d/skeleton.glb', // رابط النموذج الخاص بك
             (gltf) => {
                 const model = gltf.scene;
-                model.scale.set(0.01, 0.01, 0.01); // اضبط الحجم حسب النموذج
+                model.scale.set(0.01, 0.01, 0.01); // اضبط الحجم حسب الحاجة
                 model.position.set(0, -1, 0);
                 scene.add(model);
             },
             (xhr) => console.log((xhr.loaded / xhr.total * 100) + '% loaded'),
-            (error) => console.error('Error loading model:', error)
+            (error) => console.error('خطأ في تحميل النموذج:', error)
         );
 
         // ضبط موقع الكاميرا
